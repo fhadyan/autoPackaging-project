@@ -25,4 +25,8 @@ class Product extends Model
         return $this->belongsToMany('App/Order');
     }
 
+    public function kolis(){
+        return $this->belongsToMany('App/Koli');
+    }
+
 }

@@ -21,4 +21,9 @@ class Box extends Model
      */
     protected $fillable = ['width', 'length', 'height', 'std'];
 
+
+    public function kolis(){
+        return $this->hasMany('App/Koli');
+    }
+
 }

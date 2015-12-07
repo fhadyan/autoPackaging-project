@@ -25,4 +25,8 @@ class Order extends Model
     public function letter(){
     	return $this->hasOne('App/Letter');
     }
+
+    public function kolis(){
+        return $this->hasMany('App/Koli');
+    }
 }
