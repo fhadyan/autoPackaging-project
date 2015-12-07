@@ -21,4 +21,8 @@ class Consumer extends Model
      */
     protected $fillable = ['name', 'email', 'address', 'nohp'];
 
+    public function orders(){
+        return $this->hasMany('App/Order');
+    }
+
 }

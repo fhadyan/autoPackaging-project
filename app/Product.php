@@ -21,4 +21,8 @@ class Product extends Model
      */
     protected $fillable = ['product_name', 'weight', 'length', 'widht', 'height'];
 
+    public function orders(){
+        return $this->belongsToMany('App/Order');
+    }
+
 }

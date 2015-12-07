@@ -20,3 +20,4 @@ Route::resource('consumer', 'ConsumerController');
 Route::resource('supir', 'SupirController');
 Route::resource('user', 'UserController');
 Route::resource('box', 'BoxController');
+Route::resource('order', 'OrderController');
