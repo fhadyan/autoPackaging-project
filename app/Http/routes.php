@@ -21,3 +21,5 @@ Route::resource('supir', 'SupirController');
 Route::resource('user', 'UserController');
 Route::resource('box', 'BoxController');
 Route::resource('order', 'OrderController');
+Route::resource('packaging', 'PackagingController');
+Route::resource('letter', 'LetterController');

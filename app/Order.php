@@ -21,4 +21,8 @@ class Order extends Model
     public function products(){
     	return $this->belongToMany('App/Product');
     }
+
+    public function letter(){
+    	return $this->hasOne('App/Letter');
+    }
 }

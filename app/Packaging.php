@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Supir extends Model
+class Packaging extends Model
 {
 
     /**
@@ -12,14 +12,14 @@ class Supir extends Model
      *
      * @var string
      */
-    protected $table = 'supirs';
+    protected $table = 'packagings';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'address', 'nohp'];
+    protected $fillable = ['no_do', 'no_contract', 'invoice', 'invoice_date'];
 
     public function letter(){
         return $this->hasOne('App/Letter');
