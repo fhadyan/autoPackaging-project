@@ -31,6 +31,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="{{ url('/product') }}">Produk</a></li>
+						<li><a href="{{ url('/consumer') }}">Konsumer</a></li>
+						<li><a href="{{ url('/supir') }}">Supir</a></li>
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
