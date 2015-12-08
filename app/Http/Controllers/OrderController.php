@@ -6,6 +6,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Order;
+use App\Consumer;
+use App\User;
+use App\Product;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -28,9 +31,12 @@ class OrderController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Request $request)
 	{
-		return view('order.create');
+		$request->session()->forget('product');
+		$consumers = Consumer::lists('name','id');
+		$products = Product::lists('product_name','id');
+		return view('order.create', compact('consumers'))->with(compact('products'));
 	}
 
 	/**
@@ -40,8 +46,32 @@ class OrderController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
-		Order::create($request->all());
+		if($request->consumer=="yes"){
+			//$this->validate($request, ['date' => 'required',]);	
+			//$order = Order::create($request->all());
+			$order = new Order($request->all());
+			$order->date = date("Y-m-d");
+			$order->save();
+		}else{
+			$this->validate($request, ['name' => 'required|min:4|max:32|unique:consumers',
+								   'email' => 'required|email|unique:consumers',
+								   'nohp' => 'required',
+								   'address' => 'required']);
+			$consumer = Consumer::create($request->all());
+			$order = new Order($request->all());
+			$order->consumer_id = $consumer->id;
+			$order->date = date("Y-m-d");
+			$order->save();
+		}
+
+		$products = explode("-", $request->session()->get('product', 'default'));
+		echo $request->session()->get('product', 'default');
+		foreach ($products as $product) {
+			$productData = explode("#", $product);
+			$order->products()->attach($productData[0], array("amount"=>$productData[1]));
+		}
+		
+		//Order::create($request->all());
 		return redirect('order');
 	}
 
@@ -93,6 +123,23 @@ class OrderController extends Controller
 	{
 		Order::destroy($id);
 		return redirect('order');
+	}
+
+	public function addProduct(Request $request, $id, $amount)
+	{
+		if ($request->session()->has('product')) {
+			$data = $request->session()->get('product', 'default');
+			$data .="-".$id."#".$amount;
+			$request->session()->put('product', $data);
+		}else{
+			$data =$id."#".$amount;
+			$request->session()->put('product', $data);
+		}
+		$product=Product::findOrFail($id);
+		$text = $product->product_name; 
+		$text .= "-";
+		$text .= $product->price;
+		return $text;
 	}
 
 }

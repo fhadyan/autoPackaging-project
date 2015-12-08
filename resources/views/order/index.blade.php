@@ -16,7 +16,9 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('/order', $item->id) }}">{{ $item->date }}</a></td><td>{{ $item->user_id }}</td><td>{{ $item->consumer_id }}</td>
+                    <td><a href="{{ url('/order', $item->id) }}">{{ $item->date }}</a></td>
+                    <td>{{ $item->user()->get()->first()->name }}</td>
+                    <td>{{ $item->consumer()->get()->first()->name }}</td>
                     <td><a href="{{ url('/order/'.$item->id.'/edit') }}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a> / {!! Form::open(['method'=>'delete','action'=>['OrderController@destroy',$item->id], 'style' => 'display:inline']) !!}<button type="submit" class="btn btn-danger btn-xs">Delete</button>{!! Form::close() !!}</td>
                 </tr>
             @endforeach

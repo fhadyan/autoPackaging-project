@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -23,6 +24,8 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    protected $redirectPath = '/';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -31,6 +34,19 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    public function redirectUser(){
+        return redirect('/user');
+        if(Auth::guest()){
+            return redirect('/auth/login');
+        }else{
+            if(Auth::user()->position=="marketing"){
+                return redirect('/order');    
+            }else{
+                return redirect('/user');
+            }
+        }
     }
 
     /**
@@ -42,9 +58,13 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|min:4|max:32|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'address' => 'required',
+            'nohp' => 'required',
+            'position' => 'required',
+            'username' => 'required'
         ]);
     }
 
@@ -60,6 +80,10 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'username' => $data['username'],
+            'address' => $data['address'],
+            'nohp' => $data['nohp'],
+            'position' => $data['position'],
         ]);
     }
 }

@@ -17,7 +17,7 @@ class Koli extends Model
     }
 
     public function box(){
-    	return $this->beongsTo('App/Box')
+    	return $this->belongsTo('App/Box')
     }
 
     public function products(){

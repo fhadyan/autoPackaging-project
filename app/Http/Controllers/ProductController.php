@@ -40,7 +40,7 @@ class ProductController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate($request, ['name' => 'required|unique:products|min:4|max:16',
+		$this->validate($request, ['product_name' => 'required|unique:products|min:4|max:16',
 								   'weight' => 'required',
 								   'length' => 'required',
 								   'width' => 'required',
@@ -83,6 +83,12 @@ class ProductController extends Controller
 	public function update($id, Request $request)
 	{
 		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
+		$this->validate($request, ['product_name' => 'required|min:4|max:16',
+								   'weight' => 'required',
+								   'length' => 'required',
+								   'widht' => 'required',
+								   'height' => 'required',
+								   'price' => 'required']);
 		$product = Product::findOrFail($id);
 		$product->update($request->all());
 		return redirect('product');

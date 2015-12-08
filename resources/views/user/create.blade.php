@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Create New User</h1>
+    <h1>Tambah Pegawai</h1>
     <hr/>
 
     {!! Form::open(['url' => 'user', 'class' => 'form-horizontal']) !!}
@@ -45,7 +45,7 @@
                     </div><div class="form-group">
                         {!! Form::label('position', 'Position: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('position', null, ['class' => 'form-control']) !!}
+                            {!! Form::select('position', array('marketing' => 'marketing', 'HR' => 'HR'), NULL, ['class' => 'col-sm-3 control-label']) !!}
                         </div>
                     </div>
 

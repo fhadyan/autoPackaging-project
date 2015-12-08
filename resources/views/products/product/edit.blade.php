@@ -32,6 +32,11 @@
                         <div class="col-sm-6">
                             {!! Form::number('height', null, ['class' => 'form-control']) !!}
                         </div>
+                    </div><div class="form-group">
+                        {!! Form::label('price', 'Harga: ', ['class' => 'col-sm-3 control-label']) !!}
+                        <div class="col-sm-6">
+                            {!! Form::text('price', null, ['class' => 'form-control']) !!}
+                        </div>
                     </div>
     
     <div class="form-group">

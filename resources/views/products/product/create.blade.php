@@ -23,7 +23,7 @@
                             {!! Form::text('length', null, ['class' => 'form-control']) !!}
                         </div>
                     </div><div class="form-group">
-                        {!! Form::label('widht', 'Widht: ', ['class' => 'col-sm-3 control-label']) !!}
+                        {!! Form::label('widht', 'Width: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
                             {!! Form::text('widht', null, ['class' => 'form-control']) !!}
                         </div>

@@ -41,6 +41,9 @@ class SupirController extends Controller
 	public function store(Request $request)
 	{
 		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
+		$this->validate($request, ['name' => 'required|min:4',
+								   'address' => 'required|unique:supirs',
+								   'nohp' => 'requierd']); 
 		Supir::create($request->all());
 		return redirect('supir');
 	}
@@ -77,7 +80,9 @@ class SupirController extends Controller
 	 */
 	public function update($id, Request $request)
 	{
-		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
+		$this->validate($request, ['name' => 'required|min:4',
+								   'address' => 'required|unique:supirs',
+								   'nohp' => 'requierd']); // Uncomment and modify if you need to validate any input.
 		$supir = Supir::findOrFail($id);
 		$supir->update($request->all());
 		return redirect('supir');

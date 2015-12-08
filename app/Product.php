@@ -19,14 +19,14 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['product_name', 'weight', 'length', 'widht', 'height'];
+    protected $fillable = ['product_name', 'weight', 'length', 'widht', 'height', 'price'];
 
     public function orders(){
-        return $this->belongsToMany('App/Order');
+        return $this->belongsToMany('App\Order');
     }
 
     public function kolis(){
-        return $this->belongsToMany('App/Koli');
+        return $this->belongsToMany('App\Koli');
     }
 
 }

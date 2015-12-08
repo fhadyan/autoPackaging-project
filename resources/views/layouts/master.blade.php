@@ -24,7 +24,7 @@
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	            </button>
-	            <a class="navbar-brand" href="#">CRUD App</a>
+	            <a class="navbar-brand" href="/">CRUD App</a>
 	        </div>
 
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -33,11 +33,26 @@
 						<li><a href="{{ url('/product') }}">Produk</a></li>
 						<li><a href="{{ url('/consumer') }}">Konsumer</a></li>
 						<li><a href="{{ url('/supir') }}">Supir</a></li>
+						<li><a href="{{ url('/order') }}">Order</a></li>
+						<li><a href="{{ url('/box') }}">Box</a></li>
+						<li><a href="{{ url('/user') }}">user</a></li>
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
-						<li><a href="#">{{ Auth::user()->name }}</a></li>
+						@if(Auth::user()->position=="marketing")
+						<li><a href="{{ url('/packaging') }}">Packaging</a></li>
+						<li><a href="{{ url('/product') }}">Produk</a></li>
+						<li><a href="{{ url('/box') }}">Kardus</a></li>
+						<li><a href="{{ url('/order') }}">Pesanan</a></li>
+						<li><a href="{{ url('/consumer') }}">Konsumer</a></li>
+						<li><a href="{{ url('/user/'.Auth::user()->id.'/edit') }}">{{ Auth::user()->name }}</a></li>
 						<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+						@else
+						<li><a href="{{ url('/user') }}">Pegawai</a></li>
+						<li><a href="{{ url('/supir') }}">Supir</a></li>
+						<li><a href="{{ url('/user/'.Auth::user()->id.'/edit') }}">{{ Auth::user()->name }}</a></li>
+						<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+						@endif
 					@endif
 				</ul>
 			</div>
@@ -51,13 +66,12 @@
 
 	<hr/>
 
-	<div class="container">
-	    &copy; {{ date('Y') }}. Created by <a href="http://www.appzcoder.com">AppzCoder</a>
-	    <br/>
-	</div>
+	
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../asset/js/dom.js"></script>
+	<script type="text/javascript" src="../asset/js/ajax.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>

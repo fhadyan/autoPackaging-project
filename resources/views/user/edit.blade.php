@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Edit User</h1>
+    <h1>Ubah User</h1>
     <hr/>
 
     {!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->id], 'class' => 'form-horizontal']) !!}
@@ -25,12 +25,12 @@
                     </div><div class="form-group">
                         {!! Form::label('password', 'Password: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
-                            {!! Form::password('password', null, ['class' => 'form-control']) !!}
+                            {!! Form::password('password', ['class' => 'form-control']) !!}
                         </div>
                     </div><div class="form-group">
                         {!! Form::label('password_confirmation', 'Password Confirmation: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
-                            {!! Form::password('password_confirmation', null, ['class' => 'form-control']) !!}
+                            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                         </div>
                     </div><div class="form-group">
                         {!! Form::label('address', 'Address: ', ['class' => 'col-sm-3 control-label']) !!}

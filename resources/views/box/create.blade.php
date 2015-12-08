@@ -22,15 +22,11 @@
                         <div class="col-sm-6">
                             {!! Form::number('height', null, ['class' => 'form-control']) !!}
                         </div>
-                    </div><div class="form-group">
-                        {!! Form::label('std', 'Std: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::number('std', null, ['class' => 'form-control']) !!}
-                        </div>
                     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
+            {!! Form::hidden('std', 1) !!}
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>    
     </div>

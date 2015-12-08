@@ -11,22 +11,22 @@ class Order extends Model
     protected $fillable = ['date','user_id','consumer_id'];
 
     public function user(){
-    	return $this->belongsTo('App/User');
+    	return $this->belongsTo('App\User');
     }
 
     public function consumer(){
-    	return $this->belongsTo('App/Consumer');
+    	return $this->belongsTo('App\Consumer');
     }
 
     public function products(){
-    	return $this->belongToMany('App/Product');
+    	return $this->belongsToMany('App\Product');
     }
 
     public function letter(){
-    	return $this->hasOne('App/Letter');
+    	return $this->hasOne('App\Letter');
     }
 
     public function kolis(){
-        return $this->hasMany('App/Koli');
+        return $this->hasMany('App\Koli');
     }
 }

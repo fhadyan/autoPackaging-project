@@ -22,7 +22,7 @@ class Supir extends Model
     protected $fillable = ['name', 'address', 'nohp'];
 
     public function letter(){
-        return $this->hasOne('App/Letter');
+        return $this->hasOne('App\Letter');
     }
 
 }
