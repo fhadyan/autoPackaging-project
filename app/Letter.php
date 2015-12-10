@@ -19,18 +19,18 @@ class Letter extends Model
      *
      * @var array
      */
-    protected $fillable = ['date', 'note', 'order_id', 'supir_id', 'packaging_id'];
+    protected $fillable = ['date', 'no_letter', 'note', 'order_id', 'supir_id', 'packaging_id'];
 
     public function order(){
-        return $this->belongsTo('App/Order');
+        return $this->belongsTo('App\Order');
     }
 
     public function packaging(){
-        return $this->belongsTo('App/Packaging')
+        return $this->belongsTo('App\Packaging');
     }
 
     public function supir(){
-        return $this->belongsTo('App/Supir');
+        return $this->belongsTo('App\Supir');
     }
 
 }

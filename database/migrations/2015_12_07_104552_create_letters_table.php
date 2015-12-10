@@ -15,6 +15,7 @@ class CreateLettersTable extends Migration
         
             Schema::create('letters', function(Blueprint $table) {
                 $table->increments('id');
+                $table->string('no_letter');
                 $table->date('date');
                 $table->text('note');
                 $table->integer('order_id')->unsigned();

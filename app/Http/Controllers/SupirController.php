@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Supir;
+use App\Letter;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -43,7 +44,7 @@ class SupirController extends Controller
 		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
 		$this->validate($request, ['name' => 'required|min:4',
 								   'address' => 'required|unique:supirs',
-								   'nohp' => 'requierd']); 
+								   'nohp' => 'required']); 
 		Supir::create($request->all());
 		return redirect('supir');
 	}
@@ -100,4 +101,9 @@ class SupirController extends Controller
 		return redirect('supir');
 	}
 
+	public function delivery()
+	{
+		$letters = Letter::latest()->get();
+		return view('supir.delivery', compact('letters'));
+	}
 }

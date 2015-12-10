@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel CRUD App</title>
+	<title>Pudak Scientific</title>
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet">
 	<style>
@@ -24,18 +24,13 @@
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	            </button>
-	            <a class="navbar-brand" href="/">CRUD App</a>
+	            <a class="navbar-brand" href="/">Pudak Scientific</a>
 	        </div>
 
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/product') }}">Produk</a></li>
-						<li><a href="{{ url('/consumer') }}">Konsumer</a></li>
-						<li><a href="{{ url('/supir') }}">Supir</a></li>
-						<li><a href="{{ url('/order') }}">Order</a></li>
-						<li><a href="{{ url('/box') }}">Box</a></li>
-						<li><a href="{{ url('/user') }}">user</a></li>
+						<li><a href="{{ url('/pengantaran') }}">Supir</a></li>
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else

@@ -15,10 +15,11 @@ class CreatePackagingsTable extends Migration
         
             Schema::create('packagings', function(Blueprint $table) {
                 $table->increments('id');
+                $table->string('no_packaging');
                 $table->string('no_do');
-$table->integer('no_contract');
-$table->integer('invoice');
-$table->integer('invoice_date');
+                $table->string('no_contract');
+                $table->string('invoice');
+                $table->date('invoice_date');
 
                 $table->timestamps();
             });

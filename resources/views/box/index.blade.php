@@ -7,7 +7,12 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>SL.</th><th>Width</th><th>Length</th><th>Height</th><th>Actions</th>
+                    <th>SL.</th>
+                    <th>Lebar</th>
+                    <th>Panjang</th>
+                    <th>Tinggi</th>
+                    <th>Std</th>
+                    <th>Actions</th>
                 </tr>
             </thead>                
             <tbody>
@@ -16,7 +21,16 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('/box', $item->id) }}">{{ $item->width }}</a></td><td>{{ $item->length }}</td><td>{{ $item->height }}</td>
+                    <td><a href="{{ url('/box', $item->id) }}">{{ $item->width }}</a></td>
+                    <td>{{ $item->length }}</td>
+                    <td>{{ $item->height }}</td>
+                    <td>
+                        @if($item->std == 1)
+                        Iya
+                        @else
+                        Tidak
+                        @endif
+                    </td>
                     <td><a href="{{ url('/box/'.$item->id.'/edit') }}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a> / {!! Form::open(['method'=>'delete','action'=>['BoxController@destroy',$item->id], 'style' => 'display:inline']) !!}<button type="submit" class="btn btn-danger btn-xs">Delete</button>{!! Form::close() !!}</td>
                 </tr>
             @endforeach

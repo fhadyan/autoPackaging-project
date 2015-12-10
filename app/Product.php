@@ -19,7 +19,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['product_name', 'weight', 'length', 'widht', 'height', 'price'];
+    protected $fillable = ['product_name', 'weight', 'length', 'widht', 'height', 'price', 'product_code'];
 
     public function orders(){
         return $this->belongsToMany('App\Order');

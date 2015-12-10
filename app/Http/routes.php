@@ -22,6 +22,9 @@ Route::resource('box', 'BoxController');
 Route::resource('order', 'OrderController');
 Route::resource('packaging', 'PackagingController');
 Route::resource('letter', 'LetterController');
+Route::resource('koli', 'KoliController');
+Route::resource('koli/attachProduct', 'KoliController@attachProduct');
+Route::resource('/pengantaran', 'SupirController@delivery');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

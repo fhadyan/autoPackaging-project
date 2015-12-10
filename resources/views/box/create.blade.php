@@ -8,17 +8,17 @@
     {!! Form::open(['url' => 'box', 'class' => 'form-horizontal']) !!}
     
     <div class="form-group">
-                        {!! Form::label('width', 'Width: ', ['class' => 'col-sm-3 control-label']) !!}
+                        {!! Form::label('width', 'Lebar(cm): ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
                             {!! Form::number('width', null, ['class' => 'form-control']) !!}
                         </div>
                     </div><div class="form-group">
-                        {!! Form::label('length', 'Length: ', ['class' => 'col-sm-3 control-label']) !!}
+                        {!! Form::label('length', 'Panjang(cm): ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
                             {!! Form::number('length', null, ['class' => 'form-control']) !!}
                         </div>
                     </div><div class="form-group">
-                        {!! Form::label('height', 'Height: ', ['class' => 'col-sm-3 control-label']) !!}
+                        {!! Form::label('height', 'Tinggi(cm): ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
                             {!! Form::number('height', null, ['class' => 'form-control']) !!}
                         </div>

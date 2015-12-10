@@ -40,7 +40,10 @@ class BoxController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
+		$this->validate($request, ['width' => 'required',
+								   'height' => 'required',
+								   'length' => 'required',
+								   'std' => 'required']); // Uncomment and modify if you need to validate any input.
 		Box::create($request->all());
 		return redirect('box');
 	}

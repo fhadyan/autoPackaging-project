@@ -19,10 +19,14 @@ class Packaging extends Model
      *
      * @var array
      */
-    protected $fillable = ['no_do', 'no_contract', 'invoice', 'invoice_date'];
+    protected $fillable = ['no_do', 'no_packaging','no_contract', 'invoice', 'invoice_date'];
 
     public function letter(){
-        return $this->hasOne('App/Letter');
+        return $this->hasOne('App\Letter');
+    }
+
+    public function kolis(){
+        return $this->hasMany('App\Koli');
     }
 
 }

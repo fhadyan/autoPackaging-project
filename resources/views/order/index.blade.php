@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Orders <a href="{{ url('/order/create') }}" class="btn btn-primary pull-right btn-sm">Add New Order</a></h1>
+    <h1>Pesanan <a href="{{ url('/order/create') }}" class="btn btn-primary pull-right btn-sm">Tambah Pesanan</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

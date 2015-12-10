@@ -43,7 +43,7 @@ class ProductController extends Controller
 		$this->validate($request, ['product_name' => 'required|unique:products|min:4|max:16',
 								   'weight' => 'required',
 								   'length' => 'required',
-								   'width' => 'required',
+								   'widht' => 'required',
 								   'height' => 'required',
 								   'price' => 'required']); // Uncomment and modify if you need to validate any input.
 		Product::create($request->all());

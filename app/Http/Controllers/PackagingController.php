@@ -6,6 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Packaging;
+use App\Order;
+use App\Letter;
+use App\Box;
+use App\Koli;
+use App\Supir;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -30,7 +35,10 @@ class PackagingController extends Controller
 	 */
 	public function create()
 	{
-		return view('packaging.create');
+		$orders = Order::all();
+		$supirs = Supir::lists('name','id');
+
+		return view('packaging.create')->with(compact('supirs'))->with(compact('orders'));
 	}
 
 	/**
@@ -40,8 +48,19 @@ class PackagingController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
-		Packaging::create($request->all());
+		$this->validate($request, ['no_do' => 'required',
+								   'no_packaging' => 'required|unique:packagings',
+								   'no_contract' => 'required',
+								   'invoice' => 'required',
+								   'invoice_date' => 'required',
+								   'date' => 'required',
+								   'no_letter' => 'required',
+								   'order_id' => 'required|unique:letters',
+								   'supir_id' => 'required']); // Uncomment and modify if you need to validate any input.
+		$packaging = Packaging::create($request->all());
+		$letter = new letter($request->all());
+		$letter->packaging_id = $packaging->id;
+		$letter->save();
 		return redirect('packaging');
 	}
 
@@ -54,7 +73,13 @@ class PackagingController extends Controller
 	public function show($id)
 	{
 		$packaging = Packaging::findOrFail($id);
-		return view('packaging.show', compact('packaging'));
+		$letter = $packaging->letter()->get()->first();
+		$consumer = $letter->order()->get()->first()->consumer()->get()->first();
+		//$products = $letter->order()->get()->first()->products()->withPivot('amount')->get()->first();
+		$products = $letter->order()->get()->first()->products()->withPivot('amount')->get();
+		$kolis = $packaging->kolis()->get();
+		$boxes = Box::all();
+		return view('packaging.show', compact('packaging'))->with(compact('letter'))->with(compact('consumer'))->with(compact('products'))->with(compact('kolis'))->with(compact('boxes'));
 	}
 
 	/**

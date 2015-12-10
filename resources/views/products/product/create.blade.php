@@ -13,6 +13,11 @@
                             {!! Form::text('product_name', null, ['class' => 'form-control']) !!}
                         </div>
                     </div><div class="form-group">
+                        {!! Form::label('product_code', 'Kode Produk: ', ['class' => 'col-sm-3 control-label']) !!}
+                        <div class="col-sm-6">
+                            {!! Form::text('product_code', null, ['class' => 'form-control']) !!}
+                        </div>
+                    </div><div class="form-group">
                         {!! Form::label('weight', 'Weight: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
                             {!! Form::text('weight', null, ['class' => 'form-control']) !!}

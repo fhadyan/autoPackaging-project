@@ -2,12 +2,7 @@
 
 @section('content')
 
-    <h1>Create New Order</h1>
-    @if(Session::has('product'))
-        {{ Session::get('product') }}
-    @else
-        ok-no
-    @endif
+    <h1>Buat Pesanan Baru</h1>
     <hr/>
 
     {!! Form::open(['url' => 'order', 'class' => 'form-horizontal']) !!}

@@ -13,14 +13,14 @@ class Koli extends Model
     protected $filable=['packaging_id', 'box_id'];
 
     public function packaging(){
-    	return $this->belongsTo('App/Packaging');
+    	return $this->belongsTo('App\Packaging');
     }
 
     public function box(){
-    	return $this->belongsTo('App/Box')
+    	return $this->belongsTo('App\Box');
     }
 
     public function products(){
-        return $this->belongsToMany('App/Product');
+        return $this->belongsToMany('App\Product');
     }
 }
