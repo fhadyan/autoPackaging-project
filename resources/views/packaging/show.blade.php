@@ -89,7 +89,9 @@
                         <td>{{ $item->product_name }}</td>
                         <td>{{ $item->pivot->amount}}</td>
                         <td>
+                            @if($item->kolis()->get()->where('packaging_id',$packaging->id)->first()!=null)
                             {{ $item->kolis()->get()->where('packaging_id',$packaging->id)->first()->id }}
+                            @endif
                         </td>
                     </tr>
                 @endforeach

@@ -58,7 +58,7 @@
                         <div class="col-sm-6">
                             <select class="form-control" name="order_id">
                                 @foreach($orders as $order)
-                                    <option value="{{ $order->id }}">{{ $order->consumer()->get()->first()->name }}</option>
+                                    <option value="{{ $order->id }}">{{ $order->id }} - {{ $order->consumer()->get()->first()->name }} - {{ $order->date }}</option>
                                 @endforeach
                             </select>
                         </div>
