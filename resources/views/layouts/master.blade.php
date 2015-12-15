@@ -30,9 +30,8 @@
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="{{ url('/pengantaran') }}">Supir</a></li>
+						<li><a href="{{ url('/pengantaran') }}">Pengantaran</a></li>
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
 						@if(Auth::user()->position=="marketing")
 						<li><a href="{{ url('/packaging') }}">Packaging</a></li>
