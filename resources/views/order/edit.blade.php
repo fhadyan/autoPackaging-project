@@ -12,15 +12,10 @@
                         <div class="col-sm-6">
                             {!! Form::date('date', null, ['class' => 'form-control']) !!}
                         </div>
-                    </div><div class="form-group">
-                        {!! Form::label('user_id', 'User Id: ', ['class' => 'col-sm-3 control-label']) !!}
-                        <div class="col-sm-6">
-                            {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
-                        </div>
-                    </div><div class="form-group">
+                    </div><div class="form-group old-customer">
                         {!! Form::label('consumer_id', 'Consumer Id: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
-                            {!! Form::number('consumer_id', null, ['class' => 'form-control']) !!}
+                            {!! Form::select('consumer_id', $consumers, null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
     

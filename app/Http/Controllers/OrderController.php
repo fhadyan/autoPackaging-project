@@ -20,6 +20,11 @@ class OrderController extends Controller
 	 *
 	 * @return Response
 	 */
+	public function __construct()
+	{
+	    $this->middleware('auth');
+	    $this->middleware('authMarketing');
+	}
 	public function index()
 	{
 		$orders = Order::latest()->get();
@@ -84,7 +89,8 @@ class OrderController extends Controller
 	public function show($id)
 	{
 		$order = Order::findOrFail($id);
-		return view('order.show', compact('order'));
+		$products = $order->products()->withPivot('amount')->get();
+		return view('order.show', compact('order'))->with(compact('products'));
 	}
 
 	/**
@@ -96,7 +102,8 @@ class OrderController extends Controller
 	public function edit($id)
 	{
 		$order = Order::findOrFail($id);
-		return view('order.edit', compact('order'));
+		$consumers = Consumer::lists('name','id');
+		return view('order.edit', compact('order'))->with(compact('consumers'));
 	}
 
 	/**

@@ -18,6 +18,11 @@ class SupirController extends Controller
 	 *
 	 * @return Response
 	 */
+	public function __construct()
+	{
+	    $this->middleware('auth',['except' => ['delivery']]);
+	    $this->middleware('authHR',['except' => ['delivery']]);
+	}
 	public function index()
 	{
 		$supirs = Supir::latest()->get();

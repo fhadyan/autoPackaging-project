@@ -148,6 +148,8 @@ return [
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         // Use the line bellow for "laravelcollective/html" package otherwise remove it.
         Collective\Html\HtmlServiceProvider::class,
+        'Maatwebsite\Excel\ExcelServiceProvider',
+
 
     ],
 
@@ -199,6 +201,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
     ],
 
 ];

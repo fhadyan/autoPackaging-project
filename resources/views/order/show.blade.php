@@ -12,10 +12,31 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $order->id }}</td> <td> {{ $order->date }} </td><td> {{ $order->user_id }} </td><td> {{ $order->consumer_id }} </td>
+                    <td>{{ $order->id }}</td>
+                    <td> {{ $order->date }} </td>
+                    <td>{{ $order->user()->get()->first()->name }}</td>
+                    <td>{{ $order->consumer()->get()->first()->name }}</td>
                 </tr>
-            </tbody>    
+        </table>
+        <table class="table">
+            <thead>
+                <th>nama produk</th>
+                <th>harga</th>
+                <th>jumlah</th>
+                <th>total</th>
+            </thead>
+            <tbody id="product-table" class="product-table">
+                @foreach($products as $item)
+                <tr>
+                    <td>{{ $item->product_name }}</td>
+                    <td>{{ $item->price }}</td>
+                    <td>{{ $item->pivot->amount }}</td>
+                    <td>{{ $item->pivot->amount*$item->price }}</td>
+                </tr>
+                @endforeach
+            </tbody>
         </table>
     </div>
 
 @endsection
+

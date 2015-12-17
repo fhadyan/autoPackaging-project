@@ -19,6 +19,11 @@ class KoliController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('authMarketing');
+    }
     public function index()
     {
         //
@@ -102,7 +107,24 @@ class KoliController extends Controller
         $koli = Koli::findOrFail($request->koli_id);
         $product = Product::findOrFail($request->product_id);
 
-        $koli->products()->attach($product->id);
+        // $packaging = $koli->packaging()->get()->first();
+        // $kolis = $product->kolis()->get();
+        // $f=0;
+        // foreach ($kolis as $kol) {
+        //     $ko = $kol;
+        //     if($koli->packaging()->get()->first()->id == $packaging->id){
+        //         $f=1;
+        //         break;
+        //     }
+        // }
+
+        // if($f==0){
+            $product->kolis()->sync([$koli->id], true);    
+        // }else{
+        //     $ko->products()->detach($product->id);
+        //     $koli->products()->sync([$product->id], true);
+        // }
+        
 
         return redirect('packaging/'.$request->packaging_id);
 

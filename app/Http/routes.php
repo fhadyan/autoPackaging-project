@@ -11,8 +11,11 @@
 |
 */
 //Route::get('/', 'Auth\AuthController@redirectUser');
-Route::get('/', 'UserController@redirectUser');
+Route::get('/', 'UserController@index');
 Route::get('order/addProduct/{id}/{amount}', 'OrderController@addProduct');
+Route::get('packaging/print/{id}', 'PackagingController@printPackaging');
+Route::get('produk/reportcount/{year}', 'ProductController@reportCount');
+Route::get('produk/reportsum/{year}', 'ProductController@reportSum');
 
 Route::resource('product', 'ProductController');
 Route::resource('consumer', 'ConsumerController');

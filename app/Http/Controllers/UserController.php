@@ -18,6 +18,12 @@ class UserController extends Controller
 	 *
 	 * @return Response
 	 */
+	public function __construct()
+	{
+	    $this->middleware('auth');
+	    $this->middleware('authHR');
+	}
+	
 	public function index()
 	{
 		$users = User::latest()->get();

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="table-responsive">
-        <h3>Packaging <a href="{{ url('/packaging/print') }}" class="btn btn-primary pull-right btn-sm">Print</a></h3> 
+        <h3>Packaging <a href="{{ url('/packaging/print/'.$packaging->id) }}" class="btn btn-primary pull-right btn-sm">Print</a></h3> 
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>

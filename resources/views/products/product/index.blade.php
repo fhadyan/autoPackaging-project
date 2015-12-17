@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Products <a href="{{ url('/product/create') }}" class="btn btn-primary pull-right btn-sm">Add New Product</a></h1>
+    <h1>Products <a href="{{ url('/product/reportsum/'.date('Y')) }}" class="btn btn-primary pull-right btn-sm">Ringkasan Penjualan</a><a href="{{ url('/produk/reportcount/'.date('Y')) }}" class="btn btn-primary pull-right btn-sm">Laporan Penjualan</a><a href="{{ url('/product/create') }}" class="btn btn-primary pull-right btn-sm">Add New Product</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

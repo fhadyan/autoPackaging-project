@@ -17,6 +17,11 @@ class LetterController extends Controller
 	 *
 	 * @return Response
 	 */
+	public function __construct()
+	{
+	    $this->middleware('auth');
+	    $this->middleware('authMarketing');
+	}
 	public function index()
 	{
 		$letters = Letter::latest()->get();
